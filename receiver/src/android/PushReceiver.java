@@ -20,7 +20,7 @@ public class PushReceiver extends BroadcastReceiver {
         String notificationText = "";
         String notificationBigText = "";
 
-        int notificationId = 1;
+        String notificationId = "1";
 
         // Attempt to extract the notification text from the "message" property of the data payload
         if (intent.getStringExtra("message") != null) {
@@ -38,8 +38,8 @@ public class PushReceiver extends BroadcastReceiver {
         }
         
         // Attempt to extract the notification id from the notificationId property of the data payload, this allows the backend to 'update' a notification instead of creating a new one
-        if (intent.getIntExtra("notificationId") != null) {
-            notificationId = intent.getIntExtra("notificationId");
+        if (intent.getStringExtra("notificationId") != null) {
+            notificationId = intent.getStringExtra("notificationId");
         }
 
         // Prepare a notification with vibration and sound
@@ -64,7 +64,7 @@ public class PushReceiver extends BroadcastReceiver {
         Pushy.setNotificationChannel(builder, context);
 
         // Build the notification and display it
-        notificationManager.notify(notificationId, builder.build());
+        notificationManager.notify(Integer.parseInt(notificationId), builder.build());
     }
 
     private int getNotificationIcon(Context context) {
