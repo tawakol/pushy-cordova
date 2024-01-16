@@ -57,6 +57,7 @@ var actions = [
     {
         name: 'setAppId',
         noError: true,
+        noCallback: true,
         platforms: ['android', 'ios']
     },
     {
@@ -70,6 +71,12 @@ var actions = [
         noError: true,
         noCallback: true,
         platforms: ['ios']
+    },
+    {
+        name: 'setProxyEndpoint',
+        noError: true,
+        noCallback: true,
+        platforms: ['android', 'ios']
     },
     {
         name: 'setEnterpriseConfig',
@@ -91,6 +98,12 @@ var actions = [
     },
     {
         name: 'toggleInAppBanner',
+        noError: true,
+        noCallback: true,
+        platforms: ['ios']
+    },
+    {
+        name: 'toggleAPNsConnectivityCheck',
         noError: true,
         noCallback: true,
         platforms: ['ios']
