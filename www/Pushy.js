@@ -31,6 +31,12 @@ var actions = [
         platforms: ['android']
     },
     {
+        name: 'toggleForegroundService',
+        noError: true,
+        noCallback: true,
+        platforms: ['android']
+    },
+    {
         // Leave for backward compatibility
         name: 'requestStoragePermission',
         platforms: ['android']
@@ -120,8 +126,8 @@ for (var i in actions) {
 }
 
 function executeNativeAction(action) {
-    // Get platform name dynamically
-    var platform = cordova.platformId;
+    // Get platform name dynamically (add support for Capacitor)
+    var platform = typeof Capacitor !== 'undefined' ? Capacitor.getPlatform() : cordova.platformId;
 
     // Return custom function
     return function () {
